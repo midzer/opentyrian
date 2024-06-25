@@ -8,7 +8,7 @@ else
     TYRIAN_DIR = $(gamesdir)/tyrian
 endif
 
-WITH_NETWORK := true
+WITH_NETWORK := false
 
 ################################################################################
 
@@ -16,7 +16,7 @@ WITH_NETWORK := true
 
 SHELL = /bin/sh
 
-CC ?= gcc
+CC ?= emcc
 INSTALL ?= install
 PKG_CONFIG ?= pkg-config
 
@@ -63,13 +63,16 @@ ifneq ($(OPENTYRIAN_VERSION), )
 endif
 
 CPPFLAGS ?= -MMD
-CPPFLAGS += -DNDEBUG
+CPPFLAGS += -DNDEBUG -sUSE_SDL=2
 CFLAGS ?= -pedantic \
           -Wall \
           -Wextra \
           -Wno-format-truncation \
           -Wno-missing-field-initializers \
-          -O2
+          -O3 \
+		  -flto \
+		  -fno-rtti \
+		  -fno-exceptions
 LDFLAGS ?=
 LDLIBS ?=
 
