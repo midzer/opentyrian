@@ -69,7 +69,7 @@ CFLAGS ?= -pedantic \
           -Wextra \
           -Wno-format-truncation \
           -Wno-missing-field-initializers \
-          -O3 \
+		  -O3 \
 		  -flto \
 		  -fno-rtti \
 		  -fno-exceptions
